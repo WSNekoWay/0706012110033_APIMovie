@@ -2,6 +2,7 @@ package com.uc.week4retrofit.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -29,10 +30,12 @@ class HomeActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(MoviesViewModel::class.java)
         viewModel.getNowPlaying(Const.API_KEY, "en-US", 1)
 
-        viewModel.nowPlaying.observe(this, Observer { response->
+        viewModel.nowPlaying.observe(this, Observer {
+                response->
             binding.rvMovie.layoutManager = GridLayoutManager(this, 2)
             adapter = NowPlayingAdapter(response)
             binding.rvMovie.adapter = adapter
+            binding.progressBar.setVisibility(View.INVISIBLE)
         })
     }
 }
