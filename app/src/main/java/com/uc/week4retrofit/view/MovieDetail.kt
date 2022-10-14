@@ -92,7 +92,9 @@ class MovieDetail : AppCompatActivity() {
             binding.loadingBack.setVisibility(View.INVISIBLE)
             binding.loadingBar.setVisibility(View.INVISIBLE)
 
+
         })
+
 
     }
 }
