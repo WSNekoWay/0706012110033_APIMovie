@@ -43,6 +43,11 @@ class MovieDubAdapter(private val dataSet: List<SpokenLanguage>) :
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.dubView.text = dataSet[position].name
+        if (dataSet[position].name.isEmpty()){
+            viewHolder.dubView.setVisibility(View.GONE)
+        }else{
+            viewHolder.dubView.setVisibility(View.VISIBLE)
+        }
 
 
     }

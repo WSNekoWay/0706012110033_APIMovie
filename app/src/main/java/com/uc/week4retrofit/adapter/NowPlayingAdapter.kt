@@ -4,10 +4,13 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.uc.week4retrofit.R
+import com.uc.week4retrofit.helper.Const
 import com.uc.week4retrofit.view.MovieDetail
 
 
@@ -22,6 +25,7 @@ class NowPlayingAdapter(private val dataSet: ArrayList<com.uc.week4retrofit.mode
         val tvTitle:TextView
         val tvReleased: TextView
         val cvNowPLaying: CardView
+        val img_movie: ImageView
 
 
         init {
@@ -29,6 +33,7 @@ class NowPlayingAdapter(private val dataSet: ArrayList<com.uc.week4retrofit.mode
             tvTitle = view.findViewById(R.id.tv_title)
             tvReleased = view.findViewById(R.id.tv_release_mw_playing)
             cvNowPLaying = view.findViewById(R.id.cv_now_playing)
+            img_movie = view.findViewById(R.id.img_poster_movie)
         }
     }
 
@@ -47,6 +52,9 @@ class NowPlayingAdapter(private val dataSet: ArrayList<com.uc.week4retrofit.mode
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.tvTitle.text = dataSet[position].title
+        Glide.with(viewHolder.itemView.context)
+            .load(Const.IMG_URL + dataSet[position].poster_path)
+            .into(viewHolder.img_movie)
         viewHolder.tvReleased.text = dataSet[position].release_date
         viewHolder.cvNowPLaying.setOnClickListener{
             val intent = Intent(it.context,MovieDetail::class.java)
