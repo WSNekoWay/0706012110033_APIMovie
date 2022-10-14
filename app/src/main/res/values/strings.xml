@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Week4Retrofit</string>
+    <string name="tv" />
+    <string name="tv_title">Judul Film</string>
+    <string name="nulldata">-</string>
+    <string name="img">img</string>
+    <string name="title">title</string>
+    <string name="Title">Movie Title</string>
+    <string name="Genre">Genre Type</string>
+</resources>
